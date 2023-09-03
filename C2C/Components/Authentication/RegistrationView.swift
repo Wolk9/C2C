@@ -81,7 +81,8 @@ struct RegistrationView: View {
                 
                 Button {
                     Task {
-//                        await auth.createUser(withEmail: email,
+                        await auth.createUser(withEmail: email, password: password)
+//                       await auth.createUser(withEmail: email,
 //                                                   password: password,
 //                                                   firstName: firstName,
 //                                                   lastName: lastName,
