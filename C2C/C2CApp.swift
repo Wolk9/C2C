@@ -2,29 +2,39 @@
 //  C2CApp.swift
 //  C2C
 //
-//  Created by Martin de Bes on 02/09/2023.
+//  Created by Martin de Bes on 04/09/2023.
 //
 
+/*
+ MVVM Architecture
+ 
+ Model - data point
+ View - UI
+ ViewModel - manages Models for View
+ 
+ */
+
 import SwiftUI
-import FirebaseCore
-
-class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-
-    return true
-  }
-}
+import Firebase
 
 @main
 struct C2CApp: App {
-    // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+               RootView()
+            }
         }
+    }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        let db = Firestore.firestore()
+        print("FireBase Configured")
+        return true
     }
 }
