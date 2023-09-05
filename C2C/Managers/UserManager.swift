@@ -13,7 +13,7 @@ struct DBUser: Codable {
     let userId: String
     let email: String
     let photoUrl: String?
-    let role: String
+    var role: String
     let firstName: String?
     let lastName: String?
     let dob: String?

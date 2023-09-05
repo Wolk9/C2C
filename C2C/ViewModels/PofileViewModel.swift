@@ -18,10 +18,11 @@ final class ProfileViewModel: ObservableObject {
     }
     
     func toggleAdminStatus() {
-        guard let user else { return }
-        let updatedUser = user.toggleAdminStatus()
+        guard var user else { return }
+        let currentValue = user.role == "admin" ? "user" : "admin"
+        user.role = currentValue
         Task {
-            try await UserManager.shared.updateAdminUserStatus(user: updatedUser)
+            try await UserManager.shared.updateAdminUserStatus(user: user)
             self.user = try await UserManager.shared.getUser(userId: user.userId)
         }
         
