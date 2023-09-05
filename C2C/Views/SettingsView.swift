@@ -37,8 +37,20 @@ struct SettingsView: View {
                 }
                 
             }
+            Button("Delete account", role: .destructive) {
+                Task {
+                    do {
+                        try await viewModel.deleteAccount()
+                        print("Account Deleted!!")
+                        
+                    } catch {
+                        print(error)
+                    }
+                }
+                
+            }
         }
-        .navigationTitle("Profile")
+        .navigationTitle("Settings")
     }
 }
 

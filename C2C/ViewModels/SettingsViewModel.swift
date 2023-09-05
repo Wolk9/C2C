@@ -24,4 +24,17 @@ final class SettingsViewModel: ObservableObject {
         
         try await AuthenticationManager.shared.resetPassword(email: email)
     }
+    
+    func deleteAccount() async throws {
+        let authUser = try AuthenticationManager.shared.getAuthenticatedUser()
+        
+        // First remove DBUser!
+        try await UserManager.shared.deleteUser(userId: authUser.uid)
+        // Secondly remove AuthUser!
+        try await AuthenticationManager.shared.removeAccount()
+        // The other way around does not work as the user is not authenticated anymore and you lack permissions to delete the DBUser aftwerwards.
+        
+        try AuthenticationManager.shared.signOut()
+       
+    }
 }

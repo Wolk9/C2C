@@ -20,6 +20,9 @@
 		FA005B342AA65AD100639755 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA005B332AA65AD100639755 /* SettingsViewModel.swift */; };
 		FA005B362AA65C4400639755 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA005B352AA65C4400639755 /* ProfileView.swift */; };
 		FA005B382AA65C5A00639755 /* PofileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA005B372AA65C5A00639755 /* PofileViewModel.swift */; };
+		FA005B3B2AA6FFEB00639755 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA005B3A2AA6FFEB00639755 /* AuthenticationViewModel.swift */; };
+		FA005B3F2AA700C000639755 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA005B3E2AA700C000639755 /* UserManager.swift */; };
+		FA005B412AA7055100639755 /* SignInEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA005B402AA7055100639755 /* SignInEmailViewModel.swift */; };
 		FA93659C2AA3596000926D66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA93659B2AA3596000926D66 /* Assets.xcassets */; };
 		FA93659F2AA3596000926D66 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA93659E2AA3596000926D66 /* Preview Assets.xcassets */; };
 		FA9365A92AA35C9500926D66 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FA9365A82AA35C9500926D66 /* FirebaseAuth */; };
@@ -40,6 +43,9 @@
 		FA005B332AA65AD100639755 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		FA005B352AA65C4400639755 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		FA005B372AA65C5A00639755 /* PofileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PofileViewModel.swift; sourceTree = "<group>"; };
+		FA005B3A2AA6FFEB00639755 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		FA005B3E2AA700C000639755 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		FA005B402AA7055100639755 /* SignInEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailViewModel.swift; sourceTree = "<group>"; };
 		FA9365942AA3595E00926D66 /* C2C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = C2C.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA93659B2AA3596000926D66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA93659E2AA3596000926D66 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -88,9 +94,10 @@
 		FA005B212AA5F70400639755 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				FA005B2B2AA61A7000639755 /* AthenticationManager.swift */,
 				FA005B332AA65AD100639755 /* SettingsViewModel.swift */,
 				FA005B372AA65C5A00639755 /* PofileViewModel.swift */,
+				FA005B3A2AA6FFEB00639755 /* AuthenticationViewModel.swift */,
+				FA005B402AA7055100639755 /* SignInEmailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -100,6 +107,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA005B3C2AA7007D00639755 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FA005B2B2AA61A7000639755 /* AthenticationManager.swift */,
+				FA005B3E2AA700C000639755 /* UserManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		FA93658B2AA3595E00926D66 = {
@@ -122,6 +138,7 @@
 		FA9365962AA3595E00926D66 /* C2C */ = {
 			isa = PBXGroup;
 			children = (
+				FA005B3C2AA7007D00639755 /* Managers */,
 				FA005B1B2AA5EAD000639755 /* C2CApp.swift */,
 				FA005B202AA5F6FB00639755 /* Models */,
 				FA005B212AA5F70400639755 /* ViewModels */,
@@ -228,7 +245,10 @@
 				FA005B382AA65C5A00639755 /* PofileViewModel.swift in Sources */,
 				FA005B362AA65C4400639755 /* ProfileView.swift in Sources */,
 				FA005B1A2AA5EA1600639755 /* ContentView.swift in Sources */,
+				FA005B3B2AA6FFEB00639755 /* AuthenticationViewModel.swift in Sources */,
+				FA005B412AA7055100639755 /* SignInEmailViewModel.swift in Sources */,
 				FA005B2E2AA6200700639755 /* RootView.swift in Sources */,
+				FA005B3F2AA700C000639755 /* UserManager.swift in Sources */,
 				FA005B282AA616F500639755 /* AuthenticationView.swift in Sources */,
 				FA005B2C2AA61A7000639755 /* AthenticationManager.swift in Sources */,
 				FA005B302AA6277900639755 /* SettingsView.swift in Sources */,

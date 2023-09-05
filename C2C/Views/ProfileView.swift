@@ -7,29 +7,25 @@
 
 import SwiftUI
 
-@MainActor
-final class ProfileViewModel: ObservableObject {
-    
-    @Published private (set) var user: AuthDataResultModel? = nil
-    
-    func loadCurrentUser() throws {
-        self.user = try AuthenticationManager.shared.getAuthenticatedUser()
-    }
-}
-
 struct ProfileView: View {
     
     @StateObject private var viewModel = ProfileViewModel()
     @Binding var showSignInView: Bool
     
     var body: some View {
+        
         List {
             if let user = viewModel.user {
-                Text("UserId: \(user.uid)")
+                Text("UserId: \(user.userId)")
+                Button {
+                    viewModel.toggleAdminStatus()
+                } label: {
+                    Text("User is Admin: \(user.role == "user" ? "no":"yes")")
+                }
             }
         }
-        .onAppear {
-            try? viewModel.loadCurrentUser()
+        .task {
+            try? await viewModel.loadCurrentUser()
         }
         .navigationTitle("Profile")
         .toolbar {
@@ -48,7 +44,7 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ProfileView()
+            ProfileView(showSignInView: .constant(false))
         }
     }
 }
