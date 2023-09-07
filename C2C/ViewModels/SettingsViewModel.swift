@@ -35,6 +35,7 @@ final class SettingsViewModel: ObservableObject {
         // The other way around does not work as the user is not authenticated anymore and you lack permissions to delete the DBUser aftwerwards.
         
         try AuthenticationManager.shared.signOut()
+        
        
     }
 }

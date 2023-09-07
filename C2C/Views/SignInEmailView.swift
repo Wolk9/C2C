@@ -14,7 +14,11 @@ struct SignInEmailView: View {
     @Binding var showSignInView: Bool
     
     var body: some View {
+        
         VStack {
+           Image("CICO_Logo")
+                .padding()
+                .fixedSize(horizontal: true, vertical: true)
             TextField("Email...", text: $viewModel.email)
                 .padding()
                 .background(Color.gray.opacity(0.4))

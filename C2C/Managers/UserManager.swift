@@ -55,20 +55,27 @@ struct DBUser: Codable {
             self.hoursPerWeek = hoursPerWeek
     }
     
-    func toggleAdminStatus() -> DBUser {
+    mutating func toggleAdminStatus() {
         let newRole = role == "user" ?  "admin" : "user"
-        return DBUser(
-            userId: userId,
-            email: email,
-            photoUrl: photoUrl,
-            role: newRole,
-            firstName: firstName,
-            lastName: lastName,
-            dob: dob,
-            contractDate: contractDate,
-            hoursPerWeek: hoursPerWeek
-        )
+        role = newRole
     }
+    
+//    func toggleAdminStatus() -> DBUser {
+//        let newRole = role == "user" ?  "admin" : "user"
+//        return DBUser(
+//            userId: userId,
+//            email: email,
+//            photoUrl: photoUrl,
+//            role: newRole,
+//            firstName: firstName,
+//            lastName: lastName,
+//            dob: dob,
+//            contractDate: contractDate,
+//            hoursPerWeek: hoursPerWeek
+//        )
+//    }
+    
+    
 }
 
 final class UserManager {
@@ -78,7 +85,7 @@ final class UserManager {
     private init() {
         
     }
-   
+    
     private let userCollection = Firestore.firestore().collection("C2CUsers")
     
     private func userDocument(userId: String) -> DocumentReference {
@@ -100,7 +107,7 @@ final class UserManager {
     func createNewUser(user: DBUser) async throws {
         try userDocument(userId: user.userId).setData(from: user, merge: false)
     }
-
+    
     
     func getUser(userId: String) async throws -> DBUser {
         try await userDocument(userId: userId).getDocument(as: DBUser.self)
@@ -110,8 +117,17 @@ final class UserManager {
         try await Firestore.firestore().collection("C2CUsers").document(userId).delete()
     }
     
-    func updateAdminUserStatus(user: DBUser) async throws {
-        try userDocument(userId: user.userId).setData(from: user, merge: true)
+//    func updateAdminUserStatus(user: DBUser) async throws {
+//        try userDocument(userId: user.userId).setData(from: user, merge: true)
+//    }
+    func updateAdminUserStatus(userId: String, role: String) async throws {
+        let data: [String:Any] = [
+            "role" : role
+        ]
+        
+        try await userDocument(userId: userId).updateData(data)
     }
+
 }
+
 
